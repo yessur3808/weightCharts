@@ -26,8 +26,9 @@ function getData(){
 		cache: false,
 		success: function(data){
 			if(data){
-                console.log('data is ', data);
-				config.data = JSON.parse(data);
+                
+				config.data = parseFeed(JSON.parse(data));
+				console.log('data is ', config.data);
 			}else{
 				if(xhrmethod){ xhrmethod.abort(); }
 				// setTimeout(getData, 800);
@@ -67,6 +68,32 @@ function initLineChart(){
 }
 
 
+function parseFeed(sheet) {
 
-
+	try {
+		if (sheet && sheet.feed) {
+			if (sheet.feed.title && sheet.feed.title["$t"])
+				data.title = sheet.feed.title["$t"];
+			if (sheet.feed.updated && sheet.feed.updated["$t"])
+				data.last_updated = sheet.feed.updated["$t"];
+  
+			if (sheet.feed.entry && sheet.feed.entry.length) {
+				data.entries = [];
+				sheet.feed.entry.forEach(function(row) {
+					var entry = {};
+					for (key in row) {
+						if (key.indexOf("gsx$") === 0) {
+						var field = key.substr(4);
+						if (row[key]["$t"])
+							entry[field] = row[key]["$t"];
+						}
+					}
+					data.entries.push(entry);
+				});
+			}
+		}
+	} catch (err) {
+		console.error("Google sheet data parsing error: " + err)
+	}
+}
 
