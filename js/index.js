@@ -70,6 +70,8 @@ function initLineChart(){
 
 function parseFeed(sheet) {
 
+	console.log('sheet feed is ', sheet);
+
 	try {
 		if (sheet && sheet.feed) {
 			if (sheet.feed.title && sheet.feed.title["$t"])
