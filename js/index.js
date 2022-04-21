@@ -26,7 +26,10 @@ function getData(){
 		cache: false,
 		success: function(data){
 			if(data){
-				console.log('raw data00 is ', data);
+				
+				var jsondata = csvJson(data);
+				console.log('raw data is ', data);
+				console.log('json data is ', jsondata);
                 
 				config.data = parseFeed(JSON.parse(data));
 				
@@ -98,5 +101,42 @@ function parseFeed(sheet) {
 	} catch (err) {
 		console.error("Google sheet data parsing error: " + err)
 	}
+}
+
+
+
+function csvJson(csv) {
+  var splitFinder = /[\r\n]+/;
+  var lines = csv.split(splitFinder),
+    head2 = [],
+    result = [];
+  if (lines[0].indexOf("\t") > -1) {
+    var headers = lines[0].split("\t");
+  } else if (lines[0].indexOf(",") > -1) {
+    var headers = lines[0].split(",");
+  }
+  for (var i = 0; i < headers.length; i++) {
+    head2.push(headers[i].replace(/\./g, "").replace(/\s/g, ""));
+  }
+  headers = head2;
+  for (var i = 1; i < lines.length; i++) {
+    var obj = {};
+    if (lines[i].indexOf("\t") > -1) {
+      var currentline = lines[i].split("\t");
+    } else if (lines[i].indexOf(",") > -1) {
+      var currentline = lines[i].split(",");
+    }
+    for (var j = 0; j < headers.length; j++) {
+      if (
+        currentline[j] &&
+        currentline[j] != null &&
+        currentline[j] != undefined
+      ) {
+        obj[headers[j]] = currentline[j].replace(/,/g, "");
+      }
+    }
+    result.push(obj);
+  }
+  return result;
 }
 
