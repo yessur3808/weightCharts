@@ -31,7 +31,7 @@ function getData(){
 				console.log('raw data is ', data);
 				console.log('json data is ', jsondata);
                 
-				config.data = parseFeed(JSON.parse(data));
+				config.data = jsondata;
 				
 			}else{
 				if(xhrmethod){ xhrmethod.abort(); }
