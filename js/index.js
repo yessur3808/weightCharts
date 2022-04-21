@@ -4,7 +4,7 @@ var config = {
     index: "index.html",
     link: {
         urlCsv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6poUY8Fm4eFNf_WmUpG29e_YRuGJwIG29OSwzwJKOqOnkmdW8f50ITtU421YeaocasGno2oAXiukx/pub?output=csv",
-        urlJson:"https://docs.google.com/spreadsheets/d/142APkNRjc4K-nAFkdWNRsJZragzqZukZFqzQMChVt98/gviz/tq"
+        urlJson:"https://docs.google.com/spreadsheets/d/142APkNRjc4K-nAFkdWNRsJZragzqZukZFqzQMChVt98/gviz/tq?tqx=out:json"
     },
 
     data: []
