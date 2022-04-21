@@ -26,9 +26,10 @@ function getData(){
 		cache: false,
 		success: function(data){
 			if(data){
+				console.log('raw data is ', data);
                 
 				config.data = parseFeed(JSON.parse(data));
-				console.log('data is ', config.data);
+				
 			}else{
 				if(xhrmethod){ xhrmethod.abort(); }
 				// setTimeout(getData, 800);
