@@ -26,13 +26,9 @@ function getData(){
 		cache: false,
 		success: function(data){
 			if(data){
-				
 				var jsondata = csvJson(data);
-				console.log('raw data is ', data);
 				console.log('json data is ', jsondata);
-                
 				config.data = jsondata;
-				
 			}else{
 				if(xhrmethod){ xhrmethod.abort(); }
 				// setTimeout(getData, 800);
@@ -53,6 +49,7 @@ function getData(){
 
 
 function initLineChart(){
+	console.log('initiating line chart..');
     var dataSrc = [...config.data];
 
     var margin = {top: 42, right: 42, bottom: 42, left: 42}, 
