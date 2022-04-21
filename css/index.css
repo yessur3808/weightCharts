@@ -22,8 +22,8 @@ body {
 .loader { 
 	-webkit-animation: spin 1s linear infinite;
 	animation: spin 1s linear infinite; 
-	border: 3px solid #ddd;
-    border-top: 3px solid #ffcb05;
+	border: 3px solid #e7e7e7;
+    	border-top: 3px solid #05DFFF;
 	border-radius: 50%;
 	height: 75px;
 	width: 75px;
@@ -158,7 +158,7 @@ body {
 
 /*------------------------- | KEYFRAMES | -----------------------------*/
 @keyframes spin { 
-	to { border-top-color: #002BA6;-webkit-transform: rotate(360deg);transform: rotate(360deg); }
+	to { border-top-color: #007CE0;-webkit-transform: rotate(360deg);transform: rotate(360deg); }
 }
 
 /*------------------------- | MEDIA QUERIES | -----------------------------*/
