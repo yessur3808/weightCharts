@@ -26,7 +26,7 @@ function getData(){
 		cache: false,
 		success: function(data){
 			if(data){
-				console.log('raw data is ', data);
+				console.log('raw data0 is ', data);
                 
 				config.data = parseFeed(JSON.parse(data));
 				
